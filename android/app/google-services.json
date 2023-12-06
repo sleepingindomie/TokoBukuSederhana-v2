@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1031918041875",
+    "project_id": "tokobukusederhana-a4538",
+    "storage_bucket": "tokobukusederhana-a4538.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031918041875:android:ec3b06e62f4053ef6d78e6",
+        "android_client_info": {
+          "package_name": "com.example.tokobukusederhana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyTFHi7qStymxBPyD349pQiqJX3ZtlmQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

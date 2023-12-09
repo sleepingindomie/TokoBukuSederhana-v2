@@ -12,6 +12,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -21,12 +22,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void _register() async {
   final email = _emailController.text;
+  final fullname = _fullnameController.text;
   final username = _usernameController.text;
   final phoneNumber = _phoneNumberController.text; 
   final password = _passwordController.text;
   
 
-  if (email.isEmpty || username.isEmpty || password.isEmpty || phoneNumber.isEmpty) {
+  if (email.isEmpty || fullname.isEmpty ||  username.isEmpty || password.isEmpty || phoneNumber.isEmpty) {
     setState(() {
       _errorText = 'Semua bidang harus diisi';
     });
@@ -46,6 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
         // Simpan data pengguna ke Firestore, termasuk phoneNumber
         await _firestore.collection('UserList').add({
           'email': email,
+          'fullname': fullname,
           'username': username,
           'phoneNumber': phoneNumber, // Menyimpan phoneNumber di Firestore
           // Anda dapat menambahkan lebih banyak data pengguna jika diperlukan
@@ -118,6 +121,17 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
+                  controller: _fullnameController,
+                  decoration: InputDecoration(
+                    labelText: 'Nama Lengkap',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
                   controller: _usernameController,
                   decoration: InputDecoration(
                     labelText: 'Username',
@@ -177,6 +191,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void dispose() {
     _emailController.dispose();
+    _fullnameController.dispose();
     _usernameController.dispose();
     _phoneNumberController.dispose();
     _passwordController.dispose();
